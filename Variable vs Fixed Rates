@@ -1,0 +1,10 @@
+#Write a query that returns binary description of rate type per loan_id. The results should have one row per loan_id and two columns: for fixed and variable type.
+import pandas as pd
+
+# Start writing code
+submissions.head()
+dict1={'variable':1,'fixed':0}
+#submissions['binary_rate_type']=submissions['rate_type'].apply(lambda x: 1 if x=='variable' else 0)
+submissions['binary_rate_type']=submissions['rate_type'].replace(dict1)
+submissions=submissions.pivot(index='loan_id',columns='rate_type',values='binary_rate_type').reset_index()
+submissions
