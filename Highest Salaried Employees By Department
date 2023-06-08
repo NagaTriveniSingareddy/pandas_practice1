@@ -1,0 +1,10 @@
+#You have been asked to find the employee with the highest salary in each department.
+Output the department name, full name of the employee(s), and corresponding salary.
+import pandas as pd
+
+# Start writing code
+worker.head()
+result=worker.groupby(worker['department'])['salary'].max().reset_index()
+worker=worker.merge(result,how='inner',left_on=['department','salary'],right_on=['department','salary'])
+worker['full_name']=worker['first_name']+worker['last_name']
+worker[['full_name','department','salary']]
