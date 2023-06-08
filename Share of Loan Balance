@@ -1,0 +1,10 @@
+#Write a query that returns the rate_type, loan_id, loan balance , and a column that shows with what percentage the loan's balance contributes to the total balance 
+among the loans of the same rate type.
+import pandas as pd
+
+# Start writing code
+submissions.head()
+submissions['contributes_balance']=submissions.groupby(submissions['rate_type'])['balance'].transform('sum')
+submissions
+submissions['percentage_contribution'] = (submissions['balance'] / submissions['contributes_balance']) * 100
+submissions
